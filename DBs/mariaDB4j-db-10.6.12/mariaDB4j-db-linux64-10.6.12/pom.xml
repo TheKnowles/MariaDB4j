@@ -9,8 +9,9 @@
         <relativePath>../../mariaDB4j-pom-lite/pom.xml</relativePath>
     </parent>
 
-	<artifactId>mariaDB4j-db-linux64</artifactId>
-	<version>10.6.12</version>
+    <groupId>dev.atchison.mariaDB4j</groupId>
+    <artifactId>mariaDB4j-db-linux64</artifactId>
+    <version>10.6.12</version>
 
     <properties>
         <mariaDB.version>${project.version}</mariaDB.version>

@@ -1,16 +1,29 @@
+# MariaDB4j
+
+This is a mostly hard fork of MariaDB4j to account for disconnects between Java 11/17 and Spring 5/6.  
+The last binary update that shipped with MariaDB4j out of the box was 10.2.11, released in 2017.  
+
+Using Spring 5/equivalent JPA there are SQL syntax problems that make version 2.6.0 unusable for modern development.  
+The only current way to get this to work is to use installed binaries on the host system.  
+This fork aims to create and maintain a 2.7.x release series to account for the above aforementioned issues.
+
+Linux support is tested. Windows support is simulated. OSX support is not provided.  
+Best effort will be made to maintain upstream updates as applicable.  
+
+Compatability Chart
+
+| MariaDB4j | Spring | MariaDB                     |
+|-----------|--------|-----------------------------|
+| 3.0.0     | 6      | 10.2.11 / Installed version |
+| 2.6.0     | 5      | 10.2.11 / Installed version |
+| 2.7.x     | 5      | 10.6.12+                    |
+
+There are breaking changes for 2.7.x that will NOT SUPPORT versions of MariaDB before 10.5.2.  
+
 What?
 =====
 
-_Please :star: Star on GitHub and **support me 🫶 through [a Tidelift subscription](https://tidelift.com)** to ensure active maintenance!_
-
 MariaDB4j is a Java (!) "launcher" for [MariaDB](http://mariadb.org) (the "backward compatible, drop-in replacement of the MySQL® Database Server", see [Wikipedia](http://en.wikipedia.org/wiki/MariaDB)), allowing you to use MariaDB (MySQL®) from Java without ANY installation / external dependencies.  Read again: You do NOT have to have MariaDB binaries installed on your system to use MariaDB4j!
-
-<span class="badge-paypal"><a href="https://www.paypal.me/MichaelVorburgerCH?locale.x=en_US" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
-[![Patreon me!](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://www.patreon.com/vorburger)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ch.vorburger.mariaDB4j/mariaDB4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/ch.vorburger.mariaDB4j/mariaDB4j)
-[![Javadocs](http://www.javadoc.io/badge/ch.vorburger.mariaDB4j/mariaDB4j-core.svg)](http://www.javadoc.io/doc/ch.vorburger.mariaDB4j/mariaDB4j-core)
-[![JitPack](https://jitpack.io/v/vorburger/MariaDB4j.svg)](https://jitpack.io/#vorburger/MariaDB4j)
-[![Build Status](https://app.travis-ci.com/vorburger/MariaDB4j.svg?branch=main)](https://app.travis-ci.com/vorburger/MariaDB4j)
 
 How? (Java)
 ----

@@ -9,7 +9,8 @@
         <relativePath>../../mariaDB4j-pom-lite/pom.xml</relativePath>
     </parent>
 
-	<artifactId>mariaDB4j-db-winx64</artifactId>
+    <groupId>dev.atchison.mariaDB4j</groupId>
+    <artifactId>mariaDB4j-db-winx64</artifactId>
     <version>10.6.12</version>
 
     <properties>

@@ -9,3 +9,6 @@ Technically if you really must then an Oracle mySQL distrib would work as well -
 
 Note that on OSX (at least) bin/mysql_install_db is a symlink to scripts/mysql_install_db, and you need to copy the
 file from scripts rather than the symlink.
+
+Starting with version 10.6.12 of maria, scripts pull down the binaries and package the contents into the jar for eventual 
+classpath evaluation at runtime.

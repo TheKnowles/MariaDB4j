@@ -13,6 +13,7 @@
         <relativePath>../mariaDB4j-pom-lite/pom.xml</relativePath>
     </parent>
 
+    <groupId>dev.atchison.mariaDB4j</groupId>
     <artifactId>mariaDB4j-10.6.12-binaries</artifactId>
     <name>mariaDB4j 10.6.12 binaries</name>
     <!-- This artefact is never released, and just used in ../.travis.yml, so let's use a special marker version to make that clear -->
