@@ -11,7 +11,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>ch.vorburger.mariaDB4j</groupId>
+                <groupId>dev.atchison.mariaDB4j</groupId>
                 <artifactId>mariaDB4j-maven-plugin</artifactId>
                 <configuration>
                     <port>0</port>

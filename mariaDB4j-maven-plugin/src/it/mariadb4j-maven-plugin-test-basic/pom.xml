@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>ch.vorburger.mariaDB4j</groupId>
+        <groupId>dev.atchison.mariaDB4j</groupId>
         <artifactId>mariaDB4j-pom</artifactId>
         <version>@project.version@</version>
         <relativePath>../../../../pom.xml</relativePath>
