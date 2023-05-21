@@ -67,6 +67,8 @@ public class DBConfigurationBuilder {
     protected List<String> args = new ArrayList<>();
     private boolean isSecurityDisabled = true;
 
+    private boolean isBinLogEnabled = false;
+
     private boolean frozen = false;
     private ManagedProcessListener listener;
 
@@ -207,7 +209,7 @@ public class DBConfigurationBuilder {
         return new DBConfiguration.Impl(_getPort(), _getSocket(), _getBinariesClassPathLocation(), getBaseDir(), getLibDir(), _getDataDir(),
                 _getTmpDir(), isWindows(), _getArgs(), _getOSLibraryEnvironmentVarName(), isSecurityDisabled(),
                 isDeletingTemporaryBaseAndDataDirsOnShutdown(), this::getURL, getDefaultCharacterSet(), _getExecutables(),
-                getProcessListener());
+                getProcessListener(), isBinLogEnabled());
     }
 
     /**
@@ -224,6 +226,16 @@ public class DBConfigurationBuilder {
 
     public boolean isSecurityDisabled() {
         return isSecurityDisabled;
+    }
+
+    public DBConfigurationBuilder setBinLogEnabled(boolean binLogEnabled) {
+        checkIfFrozen("setBinLogEnabled");
+        this.isBinLogEnabled = binLogEnabled;
+        return this;
+    }
+
+    public boolean isBinLogEnabled() {
+        return isBinLogEnabled;
     }
 
     public DBConfigurationBuilder addArg(String arg) {

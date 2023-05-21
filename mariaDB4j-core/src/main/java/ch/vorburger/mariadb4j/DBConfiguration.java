@@ -111,6 +111,8 @@ public interface DBConfiguration {
      **/
     boolean isSecurityDisabled();
 
+    boolean isBinLogEnabled();
+
     String getURL(String dbName);
 
     String getDefaultCharacterSet();
@@ -137,13 +139,15 @@ public interface DBConfiguration {
         private final String defaultCharacterSet;
         private final ManagedProcessListener listener;
         private final boolean isSecurityDisabled;
+        private final boolean isBinLogEnabled;
+
         private final Function<String, String> getURL;
         private final Map<Executable, Supplier<File>> executables;
 
         Impl(int port, String socket, String binariesClassPathLocation, String baseDir, String libDir, String dataDir, String tmpDir,
                 boolean isWindows, List<String> args, String osLibraryEnvironmentVarName, boolean isSecurityDisabled,
                 boolean isDeletingTemporaryBaseAndDataDirsOnShutdown, Function<String, String> getURL, String defaultCharacterSet,
-                Map<Executable, Supplier<File>> executables, ManagedProcessListener listener) {
+                Map<Executable, Supplier<File>> executables, ManagedProcessListener listener, boolean isBinLogEnabled) {
             this.port = port;
             this.socket = socket;
             this.binariesClassPathLocation = binariesClassPathLocation;
@@ -160,6 +164,7 @@ public interface DBConfiguration {
             this.defaultCharacterSet = defaultCharacterSet;
             this.listener = listener;
             this.executables = executables;
+            this.isBinLogEnabled = isBinLogEnabled;
         }
 
         @Override public int getPort() {
@@ -226,6 +231,10 @@ public interface DBConfiguration {
             return executables.getOrDefault(executable, () -> {
                 throw new IllegalArgumentException(executable.name());
             }).get();
+        }
+
+        @Override public boolean isBinLogEnabled() {
+            return isBinLogEnabled;
         }
     }
 }
