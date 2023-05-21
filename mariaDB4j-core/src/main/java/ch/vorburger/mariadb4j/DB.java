@@ -51,6 +51,7 @@ import org.slf4j.LoggerFactory;
  * @author Michael Vorburger
  * @author Michael Seaton
  * @author Gordon Little
+ * @author Knowles Atchison, Jr.
  */
 public class DB {
 
@@ -191,6 +192,10 @@ public class DB {
         } else {
             builder.addFileArgument("--datadir", dataDir.getCanonicalFile());
             builder.addFileArgument("--tmpdir", tmpDir.getCanonicalFile());
+        }
+        if (configuration.isBinLogEnabled()) {
+            builder.addArgument("--log-bin");
+            builder.addArgument("--binlog-format=row");
         }
         addPortAndMaybeSocketArguments(builder);
         for (String arg : configuration.getArgs()) {
