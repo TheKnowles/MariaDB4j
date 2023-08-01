@@ -24,5 +24,6 @@
         <!-- Support for version prior to 10.5.2 are not supported -->
         <module>mariaDB4j-db-10.6.12/mariaDB4j-db-linux64-10.6.12</module>
         <module>mariaDB4j-db-10.6.12/mariaDB4j-db-winx64-10.6.12</module>
+        <module>mariaDB4j-db-10.6.12/mariaDB4j-db-mac64-10.6.12</module>
     </modules>
 </project>
