@@ -12,7 +12,7 @@
     <groupId>dev.atchison.mariaDB4j</groupId>
     <artifactId>mariaDB4j-db-winx64</artifactId>
     <!-- point release to fix broken winx64 pacakge -->
-    <version>10.6.12.1</version>
+    <version>10.6.12.fix1</version>
 
     <properties>
         <mariaDB.version>10.6.12</mariaDB.version>

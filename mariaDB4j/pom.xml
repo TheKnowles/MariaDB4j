@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>dev.atchison.mariaDB4j</groupId>
 			<artifactId>mariaDB4j-db-winx64</artifactId>
-			<version>10.6.12.1</version>
+			<version>10.6.12.fix1</version>
 		</dependency>
 		<!-- no support for osx, see PR commentary -->
 		<dependency>
