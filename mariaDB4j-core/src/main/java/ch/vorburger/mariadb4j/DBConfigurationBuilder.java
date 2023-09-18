@@ -305,7 +305,13 @@ public class DBConfigurationBuilder {
                 throw new IllegalStateException("OS not directly supported, please use setDatabaseVersion() to set the name "
                         + "of the package that the binaries are in, for: " + SystemUtils.OS_VERSION);
             }
-            databaseVersion = "mariadb-10.6.12";
+            // initial 10.6.12 winx64 artifact publish was broken
+            // point release made to work on Windows correctly
+            if (WINX64.equals(getOS())) {
+                databaseVersion = "mariadb-10.6.12.1";
+            } else {
+                databaseVersion = "mariadb-10.6.12";
+            }
         }
         return databaseVersion;
     }
