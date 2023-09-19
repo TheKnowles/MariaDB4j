@@ -148,7 +148,7 @@ MariaDB4j JAR binaries are available from:
 <dependency>
     <groupId>dev.atchison.mariaDB4j</groupId>
     <artifactId>mariaDB4j</artifactId>
-    <version>2.7.0</version>
+    <version>2.7.2</version>
 </dependency>
 ```
 
@@ -163,7 +163,7 @@ source; just git clone this and then mvn install or deploy. -- MariaDB4j's Maven
 <dependency>
     <groupId>dev.atchison.mariaDB4j</groupId>
     <artifactId>mariaDB4j</artifactId>
-    <version>2.7.1-SNAPSHOT</version>
+    <version>2.7.3-SNAPSHOT</version>
 </dependency>
 ```
 
