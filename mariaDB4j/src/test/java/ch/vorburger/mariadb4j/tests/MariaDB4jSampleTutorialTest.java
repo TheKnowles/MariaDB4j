@@ -52,15 +52,19 @@ public class MariaDB4jSampleTutorialTest {
      */
     @Test
     public void testLocalMariaDB() throws Exception {
-        assertExecutable("/usr/sbin/mariadbd");
 
         DBConfigurationBuilder config = DBConfigurationBuilder.newBuilder();
-        config.setPort(0); // 0 => autom. detect free port
-        config.setUnpackingFromClasspath(false);
-        config.setLibDir(SystemUtils.JAVA_IO_TMPDIR + "/MariaDB4j/no-libs");
-        config.setBaseDir("/usr");
-        config.setExecutable(Server, "/usr/sbin/mariadbd");
-        check(config);
+
+        if (!config.isWindows()) {
+            assertExecutable("/usr/sbin/mariadbd");
+            config.setPort(0); // 0 => autom. detect free port
+            config.setUnpackingFromClasspath(false);
+            config.setLibDir(SystemUtils.JAVA_IO_TMPDIR + "/MariaDB4j/no-libs");
+            config.setBaseDir("/usr");
+            config.setExecutable(Server, "/usr/sbin/mariadbd");
+            check(config);
+        }
+        // SKIPPED on Windows - upstream fix expected
     }
 
     private void assertExecutable(String path) {
@@ -134,7 +138,10 @@ public class MariaDB4jSampleTutorialTest {
         // we will modify the root user password back to an empty string
         // Using the user that owns the data directory / uid we can execute this initial bootstrapping command
         // to give us pre 10.4 behavior for the purposes of this test
-        db.run("SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');", System.getProperty("user.name"), "");
+        // Windows does not implement this auth (it's not documented anywhere), so we can just use the root user.
+        // Windows behavior still uses empty string password for the root user.
+        db.run("SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');",
+                (config.isWindows()) ? "root" : System.getProperty("user.name"), "");
         db.createDB(dbName, "root", "root");
 
 

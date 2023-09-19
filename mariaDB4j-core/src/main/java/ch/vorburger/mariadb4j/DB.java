@@ -123,7 +123,7 @@ public class DB {
             // builder.addArgument("--verbose");
         } else {
             builder.addFileArgument("--datadir", dataDir.getCanonicalFile());
-            builder.addFileArgument("--tmpdir", tmpDir.getCanonicalFile());
+            // Windows does not support --tmpdir, it will reference $TMPDIR, $TEMP, or $TMP in that order
         }
         return builder.build();
     }

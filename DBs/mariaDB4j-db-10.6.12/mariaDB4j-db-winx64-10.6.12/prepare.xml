@@ -25,6 +25,8 @@
     Sym links do not work in jar files as they are not platform independent
     We copy over the mariadb* names and the code has been updated to use these new binaries
     https://jira.mariadb.org/browse/MDEV-21303
+
+    Windows calls the mysql* binaries internally.
     -->
     <target name="extract" depends="env,download"
         description="Extract project files">
@@ -33,12 +35,19 @@
                 dest="${project.build.directory}/generated-resources/ch/vorburger/mariadb4j/mariadb-${mariaDB.version}/winx64"
                 overwrite="true">
             <patternset>
+                <include name="mariadb-${mariaDB.version}-winx64/bin/mysql.exe"/>
+                <include name="mariadb-${mariaDB.version}-winx64/bin/mysqld.exe"/>
+                <include name="mariadb-${mariaDB.version}-winx64/bin/mysqlcheck.exe"/>
+                <include name="mariadb-${mariaDB.version}-winx64/bin/mysqldump.exe"/>
+                <include name="mariadb-${mariaDB.version}-winx64/bin/mysql_install_db.exe"/>
                 <include name="mariadb-${mariaDB.version}-winx64/bin/mariadb.exe"/>
                 <include name="mariadb-${mariaDB.version}-winx64/bin/mariadbd.exe"/>
                 <include name="mariadb-${mariaDB.version}-winx64/bin/mariadb-check.exe"/>
                 <include name="mariadb-${mariaDB.version}-winx64/bin/mariadb-dump.exe"/>
                 <include name="mariadb-${mariaDB.version}-winx64/bin/mariadb-install-db.exe"/>
                 <include name="mariadb-${mariaDB.version}-winx64/bin/my_print_defaults.exe"/>
+                <include name="mariadb-${mariaDB.version}-winx64/bin/server.dll"/>
+                <include name="mariadb-${mariaDB.version}-winx64/bin/server.lib"/>
                 <include name="mariadb-${mariaDB.version}-winx64/share/**/*"/>
             </patternset>
             <mapper>

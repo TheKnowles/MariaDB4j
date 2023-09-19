@@ -11,10 +11,11 @@
 
     <groupId>dev.atchison.mariaDB4j</groupId>
     <artifactId>mariaDB4j-db-winx64</artifactId>
-    <version>10.6.12</version>
+    <!-- point release to fix broken winx64 package -->
+    <version>10.6.12.fix1</version>
 
     <properties>
-        <mariaDB.version>${project.version}</mariaDB.version>
+        <mariaDB.version>10.6.12</mariaDB.version>
         <cacheDir>${project.basedir}/../../../tmpDir</cacheDir>
     </properties>
 
