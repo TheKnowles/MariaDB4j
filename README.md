@@ -7,7 +7,7 @@ Using Spring 5/equivalent JPA there are SQL syntax problems that make version 2.
 The only current way to get this to work is to use installed binaries on the host system.  
 This fork aims to create and maintain a 2.7.x release series to account for the above aforementioned issues.
 
-Linux support is tested. Windows support is simulated. OSX support is not provided.  
+Linux support is tested. Windows support is tested. OSX support is not provided.  
 Best effort will be made to maintain upstream updates as applicable.  
 
 Compatability Chart
