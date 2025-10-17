@@ -7,7 +7,7 @@ Using Spring 5/equivalent JPA there are SQL syntax problems that make version 2.
 The only current way to get this to work is to use installed binaries on the host system.  
 This fork aims to create and maintain a 2.7.x release series to account for the above aforementioned issues.
 
-Linux support is tested. Windows support is tested. OSX support is not provided.  
+Linux support is tested. Windows support is tested. OSX support is now available starting with version 2.7.3.  
 Best effort will be made to maintain upstream updates as applicable.  
 
 Compatability Chart
@@ -358,6 +358,9 @@ FAQ
 
 Q: Is MariaDB4j stable enough for production? I need the data to be safe, and performant.
 A: Try it out, and if you do find any problem, raise an issue here and let's see if we can fix it. You probably don't risk much in terms of data to be safe and performance - remember MariaDB4j is just a wrapper launching MariaDB (which is a MySQL(R) fork) - so it's as safe and performant as the underlying native DB it uses.
+
+Q: `dyld[23092]: Library not loaded: /opt/homebrew/opt/openssl@3/lib/libssl.3.dylib Referenced from: <F56C2AF5-D763-3960-A454-40591B10F714> /Users/flow/MariaDB4j/mariaDB4j/target/MariaDB4jSpringServiceOverrideBySpringValueTest/baseDir/bin/mariadbd Reason: tried: '/opt/homebrew/opt/openssl@3/lib/libssl.3.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/openssl@3/lib/libssl.3.dylib' (no such file), '/opt/homebrew/opt/openssl@3/lib/libssl.3.dylib' (no such file)`
+A: This can happen on MacOS, and can be fixed by [installing Homebrew](https://brew.sh), and then (one time) doing `brew install openssl@3`. (See [issue #497](https://github.com/MariaDB4j/MariaDB4j/issues/497#issuecomment-2762820549) for technical background.)  
 
 Q: ERROR ch.vorburger.exec.ManagedProcess - mysql: /tmp/MariaDB4j/base/bin/mysql: error while loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory
 A: This could happen e.g. on Fedora 24 if you have not previous installed any other software package which requires libncurses, and can be fixed by finding the RPM package which provides `libncurses.so.5` via `sudo dnf provides libncurses.so.5` and then install that via `sudo dnf install ncurses-compat-libs`. On Ubuntu Focal 20.04, you need to `sudo apt update && sudo apt install libncurses5`.
