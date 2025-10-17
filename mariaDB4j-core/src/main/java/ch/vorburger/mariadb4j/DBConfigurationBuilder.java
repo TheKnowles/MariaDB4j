@@ -305,7 +305,7 @@ public class DBConfigurationBuilder {
                 throw new IllegalStateException("OS not directly supported, please use setDatabaseVersion() to set the name "
                         + "of the package that the binaries are in, for: " + SystemUtils.OS_VERSION);
             }
-            databaseVersion = "mariadb-10.6.12";
+            databaseVersion = "mariadb-10.6.23";
         }
         return databaseVersion;
     }
@@ -393,6 +393,10 @@ public class DBConfigurationBuilder {
         });
 
         return executables;
+    }
+
+    public boolean isOSX() {
+        return OSX.equals(getOS());
     }
 
     public boolean isWindows() {

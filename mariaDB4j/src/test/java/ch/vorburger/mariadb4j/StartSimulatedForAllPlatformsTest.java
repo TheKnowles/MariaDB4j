@@ -46,13 +46,9 @@ public class StartSimulatedForAllPlatformsTest {
         checkPlatformStart(DBConfigurationBuilder.LINUX);
     }
 
-    // Commented out for 10.6.12 binary addition
-    // With the decommission of bintray in 2021 and the move of OCI images to GitHub Content Repo
-    // as docker images, it was impossible to unpack a version for DBs/.
-    // See additional commentary in the PR.
-//    @Test public void simulatedStartOSX() throws Exception {
-//        checkPlatformStart(DBConfigurationBuilder.OSX);
-//    }
+    @Test public void simulatedStartOSX() throws Exception {
+        checkPlatformStart(DBConfigurationBuilder.OSX);
+    }
 
     void checkPlatformStart(String platform) throws ManagedProcessException, IOException {
         DBConfigurationBuilder configBuilder = DBConfigurationBuilder.newBuilder();

@@ -53,15 +53,26 @@ public class MariaDB4jSampleTutorialTest {
     @Test
     public void testLocalMariaDB() throws Exception {
 
+        final String LINUX_EXECUTABLE = "/usr/sbin/mariadbd";
+        final String MACOS_EXECUTABLE = "/opt/homebrew/bin/mariadbd";
+
         DBConfigurationBuilder config = DBConfigurationBuilder.newBuilder();
 
-        if (!config.isWindows()) {
-            assertExecutable("/usr/sbin/mariadbd");
-            config.setPort(0); // 0 => autom. detect free port
-            config.setUnpackingFromClasspath(false);
-            config.setLibDir(SystemUtils.JAVA_IO_TMPDIR + "/MariaDB4j/no-libs");
+        config.setPort(0); // 0 => autom. detect free port
+        config.setUnpackingFromClasspath(false);
+        config.setLibDir(SystemUtils.JAVA_IO_TMPDIR + "/MariaDB4j/no-libs");
+
+        // assumes installation via homebrew on macos system
+        if (config.isOSX()) {
+            assertExecutable(MACOS_EXECUTABLE);
+            config.setBaseDir("/opt/homebrew/Cellar/mariadb@10.6/10.6.23");
+            config.setExecutable(Server, MACOS_EXECUTABLE);
+            check(config);
+        }
+        else if (!config.isWindows()) {
+            assertExecutable(LINUX_EXECUTABLE);
             config.setBaseDir("/usr");
-            config.setExecutable(Server, "/usr/sbin/mariadbd");
+            config.setExecutable(Server, LINUX_EXECUTABLE);
             check(config);
         }
         // SKIPPED on Windows - upstream fix expected
